@@ -45,13 +45,14 @@ Big Flush: 0.200%
 Four of a Kind: 0.17%
 Longest Straight: 0.100%
 Double Triples: 0.0400%
-Fuller House: 0.0300%
+Full Hotel: 0.0300%
 Straight Flush: 0.03%
 Five of a Kind: ??.?%
 Huge Flush: 0.000%
 Long Straight Flush: 0.000%
 Fullest House: 0.000%
 Longest Straight Flush: 0.000%
+Six of a Kind: ??.?%
 
 Card 1:
 
