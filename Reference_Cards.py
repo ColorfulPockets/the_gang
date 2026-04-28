@@ -4,6 +4,7 @@ Output images are 2.5in x 3.5in at 300 DPI:
 - hand_ranks_card_1.png
 - hand_ranks_card_2.png
 - hand_ranks_card_3.png
+- hand_ranks_card_4.png
 """
 
 from __future__ import annotations
@@ -22,8 +23,9 @@ IMG_W = int(CARD_WIDTH_IN * DPI)
 IMG_H = int(CARD_HEIGHT_IN * DPI)
 
 TITLE_TEXT = "Hand Ranks"
-SECOND_CARD_TITLE_TEXT = "Tiny Straights"
+SECOND_CARD_TITLE_TEXT = "Tiny Straight Ranks"
 THIRD_CARD_TITLE_TEXT = "6-Card Hand Ranks"
+FOURTH_CARD_TITLE_TEXT = "Small Flush Ranks"
 SUIT_SYMBOLS = {
 	"H": "\u2665",
 	"D": "\u2666",
@@ -80,11 +82,11 @@ PROBABILITIES: Dict[str, str] = {
 
 CARD_1_RAW: Sequence[Tuple[str, str, bool]] = [
 	("7N, 7N, 7N, 7N, 7N", "Five of a Kind", False),
-	("2S, 3S, 4S, 5S, 6S", "Straight Flush", False),
+	("6S, 5S, 4S, 3S, 2S", "Straight Flush", False),
 	("5N, 5N, 5N, 5N, (JN)", "Four of a Kind", False),
 	("AN, AN, AN, 7N, 7N", "Full House", False),
 	("NH, NH, NH, NH, NH", "Flush", False),
-	("2N, 3N, 4N, 5N, 6N", "Straight", False),
+	("6N, 5N, 4N, 3N, 2N", "Straight", False),
 	("7N, 7N, 7N, (JN), (2N)", "Three of a Kind", False),
 	("KN, KN, 3N, 3N, (JN)", "Two Pair", False),
 	("QN, QN, (8N), (7N), (4N)", "Pair", False),
@@ -94,17 +96,17 @@ CARD_1_RAW: Sequence[Tuple[str, str, bool]] = [
 
 CARD_2_RAW: Sequence[Tuple[str, str, bool]] = [
 	("7N, 7N, 7N, 7N, 7N", "Five of a Kind", False),
-	("2S, 3S, 4S, 5S, 6S", "Straight Flush", False),
+	("6S, 5S, 4S, 3S, 2S", "Straight Flush", False),
 	("5N, 5N, 5N, 5N, (JN)", "Four of a Kind", False),
-	("4D, 5D, 6D, JN, JN", "Tiny Straight Flush House", True),
+	("6D, 5D, 4D, JN, JN", "Tiny Straight Flush House", True),
 	("AN, AN, AN, 7N, 7N", "Full House", False),
 	("NH, NH, NH, NH, NH", "Flush", False),
-	("2N, 3N, 4N, 5N, 6N", "Straight", False),
-	("4D, 5D, 6D, (9C), (JH)", "Tiny Straight Flush", True),
+	("6N, 5N, 4N, 3N, 2N", "Straight", False),
+	("6D, 5D, 4D, (9C), (JH)", "Tiny Straight Flush", True),
 	("7N, 7N, 7N, (JN), (2N)", "Three of a Kind", False),
-	("4N, 5N, 6N, QN, QN", "Tiny Straight House", True),
+	("6N, 5N, 4N, QN, QN", "Tiny Straight House", True),
 	("KN, KN, 3N, 3N, (JN)", "Two Pair", False),
-	("4N, 5N, 6N, (QN), (8N)", "Tiny Straight", True),
+	("6N, 5N, 4N, (QN), (8N)", "Tiny Straight", True),
 	("QN, QN, (8N), (7N), (4N)", "Pair", False),
 	("AN, (QN), (9N), (5N), (2N)", "High Card", False),
 ]
@@ -112,20 +114,35 @@ CARD_2_RAW: Sequence[Tuple[str, str, bool]] = [
 CARD_3_RAW: Sequence[Tuple[str, str, bool]] = [
 	("4N, 4N, 4N, 4N, 4N, 4N", "Six of a Kind", True),
 	("7N, 7N, 7N, 7N, 7N, (QN)", "Five of a Kind", False),
-	("2S, 3S, 4S, 5S, 6S, (9N)", "Straight Flush", False),
+	("6S, 5S, 4S, 3S, 2S, (9N)", "Straight Flush", False),
 	("AN, AN, AN, AN, 3N, 3N", "Full Hotel", True),
 	("4N, 4N, 4N, 8N, 8N, 8N", "Double Triples", True),
 	("5N, 5N, 5N, 5N, (JN), (2N)", "Four of a Kind", False),
 	("ND, ND, ND, ND, ND, ND", "Big Flush", True),
-	("AN, 2N, 3N, 4N, 5N, 6N", "Long Straight", True),
+	("6N, 5N, 4N, 3N, 2N, AN", "Long Straight", True),
 	("QN, QN, 7N, 7N, 4N, 4N", "Three Pair", True),
 	("AN, AN, AN, 7N, 7N, (KN)", "Full House", False),
 	("NH, NH, NH, NH, NH, (NN)", "Flush", False),
-	("2N, 3N, 4N, 5N, 6N, (JN)", "Straight", False),
+	("6N, 5N, 4N, 3N, 2N, (JN)", "Straight", False),
 	("7N, 7N, 7N, (JN), (3N), (2N)", "Three of a Kind", False),
 	("KN, KN, 3N, 3N, (JN), (4N)", "Two Pair", False),
 	("QN, QN, (8N), (7N), (5N), (4N)", "Pair", False),
 	("AN, (QN), (9N), (5N), (3N), (2N)", "High Card", False),
+]
+
+CARD_4_RAW: Sequence[Tuple[str, str, bool]] = [
+	("7N, 7N, 7N, 7N, 7N", "Five of a Kind", False),
+	("6S, 5S, 4S, 3S, 2S", "Straight Flush", False),
+	("5N, 5N, 5N, 5N, (JN)", "Four of a Kind", False),
+	("8D, 7D, 6D, 5D, (QN)", "Small Straight Flush", True),
+	("AN, AN, AN, 7N, 7N", "Full House", False),
+	("NH, NH, NH, NH, NH", "Flush", False),
+	("6N, 5N, 4N, 3N, 2N", "Straight", False),
+	("7N, 7N, 7N, (JN), (2N)", "Three of a Kind", False),
+	("NC, NC, NC, NC, (NN)", "Small Flush", True),
+	("KN, KN, 3N, 3N, (JN)", "Two Pair", False),
+	("QN, QN, (8N), (7N), (4N)", "Pair", False),
+	("AN, (QN), (9N), (5N), (2N)", "High Card", False),
 ]
 
 def load_font(size: int, bold: bool = False) -> ImageFont.ImageFont:
@@ -392,18 +409,22 @@ def main() -> None:
 	rows_card_1 = build_rows(CARD_1_RAW)
 	rows_card_2 = build_rows(CARD_2_RAW)
 	rows_card_3 = build_rows(CARD_3_RAW)
+	rows_card_4 = build_rows(CARD_4_RAW)
 
 	out1 = Path("hand_ranks_card_1.png")
 	out2 = Path("hand_ranks_card_2.png")
 	out3 = Path("hand_ranks_card_3.png")
+	out4 = Path("hand_ranks_card_4.png")
 
 	draw_reference_card(rows_card_1, out1, TITLE_TEXT)
 	draw_reference_card(rows_card_2, out2, SECOND_CARD_TITLE_TEXT)
 	draw_reference_card(rows_card_3, out3, THIRD_CARD_TITLE_TEXT)
+	draw_reference_card(rows_card_4, out4, FOURTH_CARD_TITLE_TEXT)
 
 	print(f"Created {out1}")
 	print(f"Created {out2}")
 	print(f"Created {out3}")
+	print(f"Created {out4}")
 
 
 if __name__ == "__main__":
