@@ -44,7 +44,7 @@ Small Straight Flush: 0.530%
 Big Flush: 0.200%
 Four of a Kind: 0.17%
 Longest Straight: 0.100%
-Double Three of a Kind: 0.0400%
+Double Triples: 0.0400%
 Fuller House: 0.0300%
 Straight Flush: 0.03%
 Five of a Kind: ??.?%

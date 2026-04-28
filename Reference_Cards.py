@@ -1,8 +1,9 @@
-"""Generate two poker hand rank reference cards as card-sized images.
+"""Generate poker hand rank reference cards as card-sized images.
 
 Output images are 2.5in x 3.5in at 300 DPI:
 - hand_ranks_card_1.png
 - hand_ranks_card_2.png
+- hand_ranks_card_3.png
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ IMG_H = int(CARD_HEIGHT_IN * DPI)
 
 TITLE_TEXT = "Hand Ranks"
 SECOND_CARD_TITLE_TEXT = "Tiny Straights"
+THIRD_CARD_TITLE_TEXT = "6-Card Hand Ranks"
 SUIT_SYMBOLS = {
 	"H": "\u2665",
 	"D": "\u2666",
@@ -59,12 +61,12 @@ PROBABILITIES: Dict[str, str] = {
 	"Full House": "2.63%",
 	"Tiny Straight Flush House": "2.06%",
 	"Three Pair": "1.91%",
-	"Long Straight": "0.930%",
-	"Small Straight Flush": "0.530%",
-	"Big Flush": "0.200%",
+	"Long Straight": "0.93%",
+	"Small Straight Flush": "0.53%",
+	"Big Flush": "0.20%",
 	"Four of a Kind": "0.17%",
-	"Longest Straight": "0.100%",
-	"Double Three of a Kind": "0.0400%",
+	"Longest Straight": "0.10%",
+	"Double Triples": "0.04%",
 	"Fuller House": "0.0300%",
 	"Straight Flush": "0.03%",
 	"Five of a Kind": "??.?%",
@@ -106,6 +108,22 @@ CARD_2_RAW: Sequence[Tuple[str, str, bool]] = [
 	("AN, (QN), (9N), (5N), (2N)", "High Card", False),
 ]
 
+CARD_3_RAW: Sequence[Tuple[str, str, bool]] = [
+	("7N, 7N, 7N, 7N, 7N, (QN)", "Five of a Kind", False),
+	("2S, 3S, 4S, 5S, 6S, (9N)", "Straight Flush", False),
+	("4N, 4N, 4N, 8N, 8N, 8N", "Double Triples", True),
+	("5N, 5N, 5N, 5N, (JN), (2N)", "Four of a Kind", False),
+	("ND, ND, ND, ND, ND, ND", "Big Flush", True),
+	("AN, 2N, 3N, 4N, 5N, 6N", "Long Straight", True),
+	("QN, QN, 7N, 7N, 4N, 4N", "Three Pair", True),
+	("AN, AN, AN, 7N, 7N, (KN)", "Full House", False),
+	("NH, NH, NH, NH, NH, (NN)", "Flush", False),
+	("2N, 3N, 4N, 5N, 6N, (JN)", "Straight", False),
+	("7N, 7N, 7N, (JN), (3N), (2N)", "Three of a Kind", False),
+	("KN, KN, 3N, 3N, (JN), (4N)", "Two Pair", False),
+	("QN, QN, (8N), (7N), (5N), (4N)", "Pair", False),
+	("AN, (QN), (9N), (5N), (3N), (2N)", "High Card", False),
+]
 
 def load_font(size: int, bold: bool = False) -> ImageFont.ImageFont:
 	candidates = [
@@ -370,15 +388,19 @@ def draw_reference_card(rows: Sequence[HandRow], output_path: Path, title_text: 
 def main() -> None:
 	rows_card_1 = build_rows(CARD_1_RAW)
 	rows_card_2 = build_rows(CARD_2_RAW)
+	rows_card_3 = build_rows(CARD_3_RAW)
 
 	out1 = Path("hand_ranks_card_1.png")
 	out2 = Path("hand_ranks_card_2.png")
+	out3 = Path("hand_ranks_card_3.png")
 
 	draw_reference_card(rows_card_1, out1, TITLE_TEXT)
 	draw_reference_card(rows_card_2, out2, SECOND_CARD_TITLE_TEXT)
+	draw_reference_card(rows_card_3, out3, THIRD_CARD_TITLE_TEXT)
 
 	print(f"Created {out1}")
 	print(f"Created {out2}")
+	print(f"Created {out3}")
 
 
 if __name__ == "__main__":
