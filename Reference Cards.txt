@@ -1,0 +1,84 @@
+Write a python script to generate a card-sized image (3.5 inches tall, 2.5 inches wide) of a reference card that gives the rank of poker hands, with best at the top and worst at the bottom.  We will make two such cards.  They should be laid out as follows:
+
+
+Card 1 title (top): "Hand Ranks"
+Card 2 title (top): "Tiny Straights"
+Column 1: Hand example
+Column 2: Hand name
+Column 3: Hand probability
+
+The columns do not need titles.
+
+Make the card images and font as big as they can be without exceeding the card height or width.
+
+Make the "Hand Ranks" title smaller.
+
+Make all table lines invisible and add a little bit of vertical padding between rows.
+
+All rows should shrink downward to fit their content, rather than stretching content to fill the full available height.
+
+Hand Example:  The hand example should show 5 simplified card images giving an example of the hand.  Each card image is a rectangle with the card value (e.g. 1, 2, A, K) and a Unicode suit symbol underneath it (\u2665, \u2660, \u2663, \u2666).  Cards that aren't relevant to the hand are light grey instead of their normal color.  I will specify the examples using H = Hearts, S = Spades, C = Clubs, D = Diamonds, N = Null (leave a blank space for the suit), and put the card in parentheses if it should be greyed out.  If a card's value is N, leave the value text blank.  This column should resize to fit the example with the most cards (they may have more than 5).  Make the example hand card rectangles bigger.
+
+Hand name: Just the text of the hand name.
+
+Hand probability: Just a number.  This column should shrink to fit its widest content.  Use these percentages rounded to 3 significant digits:
+
+Use a bigger font for readability.
+
+High Card: 100%
+Pair: 79.0%
+Tiny Straight: 54.7%
+Two Pair: 26.6%
+Tiny Straight House: 22.9%
+Small Flush: 22.6%
+Small Straight: 18.5%
+Three of a Kind: 7.71%
+Tiny Straight Flush: 6.99%
+Straight: 4.81%
+Flush: 3.06%
+Full House: 2.63%
+Tiny Straight Flush House: 2.06%
+Three Pair: 1.91%
+Long Straight: 0.930%
+Small Straight Flush: 0.530%
+Big Flush: 0.200%
+Four of a Kind: 0.17%
+Longest Straight: 0.100%
+Double Three of a Kind: 0.0400%
+Fuller House: 0.0300%
+Straight Flush: 0.03%
+Five of a Kind: ??.?%
+Huge Flush: 0.000%
+Long Straight Flush: 0.000%
+Fullest House: 0.000%
+Longest Straight Flush: 0.000%
+
+Card 1:
+
+7N, 7N, 7N, 7N, 7N | Five of a Kind
+2S, 3S, 4S, 5S, 6S | Straight Flush
+5N, 5N, 5N, 5N, (JN) | Four of a Kind
+AN, AN, AN, 7N, 7N | Full House
+NH, NH, NH, NH, NH | Flush
+2N, 3N, 4N, 5N, 6N | Straight
+7N, 7N, 7N, (JN), (2N) | Three of a Kind
+KN, KN, 3N, 3N, (JN) | Two Pair
+QN, QN, (8N), (7N), (4N) | Pair
+AN, (QN), (9N), (5N), (2N) | High Card
+
+Card 2 - Highlight the rows marked with HIGHLIGHT:
+
+7N, 7N, 7N, 7N, 7N | Five of a Kind
+2S, 3S, 4S, 5S, 6S | Straight Flush
+5N, 5N, 5N, 5N, (JN) | Four of a Kind
+4D, 5D, 6D, JN, JN | Tiny Straight Flush House | HIGHLIGHT
+AN, AN, AN, 7N, 7N | Full House
+NH, NH, NH, NH, NH | Flush
+2N, 3N, 4N, 5N, 6N | Straight
+4D, 5D, 6D, (9C), (JH) | Tiny Straight Flush | HIGHLIGHT
+7N, 7N, 7N, (JN), (2N) | Three of a Kind
+4N, 5N, 6N, QN, QN | Tiny Straight House | HIGHLIGHT
+KN, KN, 3N, 3N, (JN) | Two Pair
+4N, 5N, 6N, (QN), (8N) | Tiny Straight | HIGHLIGHT
+QN, QN, (8N), (7N), (4N) | Pair
+AN, (QN), (9N), (5N), (2N) | High Card

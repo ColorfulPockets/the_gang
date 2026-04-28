@@ -1,0 +1,32 @@
+LINKMULTI = reprint
+link = "1yWwPmRFTZKwfFLetAAbmP6Q3fhdry-NprE9ZZpzl81Y"
+
+UNIT = INCH
+PAGE = 8.5, 11, PORTRAIT, HV
+BORDER = RECTANGLE, #000000, 0.05
+MARGINS = 0.2, 0.2, 0.1, 0.1
+CARDSIZE = 2.5, 3.5
+
+    ; Background color
+    IF = [Type] = "Detrimental"
+        RECTANGLE = , 0,0,100%,100%, #000000, #FFCCCC
+    ELSE
+        RECTANGLE = , 0,0,100%,100%, #000000, #CCFFCC
+    ENDIF
+    
+
+    ; Card Title box
+    FONT = "Arial", 10, BTF, #000000
+    RECTANGLE = , 0, 0, 2.5, 0.3, #000000, EMPTY,0.025
+
+    TEXT = , CONCAT([Card],1, " v",1, [Version],1), 0.05, 0.05, 1.95, 0.2, LEFT, CENTER
+    RECTANGLE = , 0, 0.3, 2.5, 1.1, #000000, EMPTY,0.025
+
+    FONT = "Arial", 10, TF, #000000
+    TEXT = ,[Type], 0.05, 1.4, 2.4, 0.2, LEFT, CENTER
+
+    FONT = "Arial", 10, TF, #000000
+    RECTANGLE = , 0, 1.6, 2.5, 1.9, #000000, EMPTY, 0.025
+    TEXT = , [Modifier], 0.05, 1.65, 2.4, 1.6, LEFT, WWTOP
+
+    SAVE = , "Cards\[Card].png"
