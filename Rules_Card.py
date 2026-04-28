@@ -27,11 +27,12 @@ RULES: List[str] = [
 	"Wildcards can have any suit and value, and must be used to make the best hand possible unless otherwise specified.",
 	"Kicker cards are cards that are part of your 5-card hand, but do nothing to determine the rank of your hand (i.e., they are used only as tiebreakers).",
 	'"Sharing" means giving information to all players.',
+	'A card is considered revealed if it has been shown face-up to all players simultaneously.',
 	"Beneficial modifiers are optional and can be used at any point in the hand, unless otherwise specified.",
 	"If a modifier could affect multiple cards and gives no way to distinguish them, the player chooses which card it affects.  If in the community, decide collectively.",
 ]
 
-BOLD_TERMS = ["discarded", "black side", "Wildcards", "Sharing", "Kicker"]
+BOLD_TERMS = ["discarded", "black side", "Wildcards", "Sharing", "Kicker", "revealed"]
 BOLD_PATTERN = re.compile("|".join(re.escape(term) for term in sorted(BOLD_TERMS, key=len, reverse=True)))
 
 
