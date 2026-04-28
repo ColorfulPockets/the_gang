@@ -1,0 +1,15 @@
+Create a python script to generate a reference card image with a rules summary. It should be a 3.5 inch tall and 2.5 inch wide rectangle with a black border matching the one added in Reference_Cards.py.  
+
+It should contain this information:
+
+Cards are discarded face-down by default.
+
+If a chip is on its black side, it cannot be taken from a player.
+
+Wildcards can have any suit and value, and must be used to make the best hand possible unless otherwise specified.
+
+"Sharing" means giving information to all players.
+
+Beneficial cards are optional and can be used at any point in the hand, unless otherwise specified.
+
+If a card refers to a highest or lowest card, and you have multiple, you can choose which one it affects, unless otherwise specified.
