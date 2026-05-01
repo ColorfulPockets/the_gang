@@ -19,14 +19,25 @@ CARDSIZE = 2.5, 3.5
     FONT = "Arial", 10, BTF, #000000
     RECTANGLE = , 0, 0, 2.5, 0.3, #000000, EMPTY,0.025
 
+IF = [version] > 1
     TEXT = , CONCAT([Card],1, " v",1, [Version],1), 0.05, 0.05, 1.95, 0.2, LEFT, CENTER
+ELSE
+    TEXT = , [Card], 0.05, 0.05, 1.95, 0.2, LEFT, CENTER
+ENDIF
     RECTANGLE = , 0, 0.3, 2.5, 1.1, #000000, EMPTY,0.025
-
     FONT = "Arial", 10, TF, #000000
     TEXT = ,[Type], 0.05, 1.4, 2.4, 0.2, LEFT, CENTER
 
     FONT = "Arial", 10, TF, #000000
     RECTANGLE = , 0, 1.6, 2.5, 1.9, #000000, EMPTY, 0.025
     TEXT = , [Modifier], 0.05, 1.65, 2.4, 1.6, LEFT, WWTOP
+
+    RECTANGLE = , 2, 0, 0.5, 0.5, #000000, #FFFFFF, 0.025
+    FONT = "Arial", 30, BTF, #000000
+    TEXT = , [Difficulty], 2, 0, 0.5, 0.5, CENTER, CENTER
+
+    RECTANGLE = , 0, 3.25, 2.5, 0.25, #000000, EMPTY, 0.025
+    FONT = "Arial", 10, TF, #000000
+    TEXT = , CONCAT("Designed by: ", 1, [Designer], 1), 0.05, 3.25, 2.45, 0.2, LEFT, CENTER
 
     SAVE = , "Cards\[Card].png"
